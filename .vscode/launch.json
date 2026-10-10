@@ -10,10 +10,10 @@
             "type": "node",
             // "program": "${workspaceFolder}/test/genericTest.ts",
             "program": "${workspaceFolder}/test/headerBaseTest.ts",
-            // test/genericTest.ts
             "cwd": "${workspaceFolder}",
             "env": {},
-            "runtimeExecutable": "/Users/luke.lin/.deno/bin/deno",
+            // "runtimeExecutable": "/Users/luke.lin/.deno/bin/deno",
+            "runtimeExecutable": "deno",
             "runtimeArgs": [
                 "run",
                 "--unstable",

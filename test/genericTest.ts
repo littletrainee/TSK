@@ -3,7 +3,7 @@ import "../source/generic.ts";
 function subArrayTest() {
     const t1: Uint8Array = new Uint8Array([10, 20, 30, 40, 50, 60, 70]);
     console.log(t1);
-    const t2: Uint8Array = t1.subArray(2, 3);
+    const t2: Uint8Array = t1.subUint8Array(2, 3);
     console.log(t2);
 }
 

@@ -6,7 +6,7 @@ declare global {
          * @param length 所需的範圍
          * @returns 返回包含指定範圍的新的陣列
          */
-        subArray(startIndex: number, length?: number): Uint8Array;
+        subUint8Array(startIndex: number, length?: number): Uint8Array;
         /**
          * @description 將 `Uint8Array` 轉換為 `string`
          * @returns `ASCII` 的 `string`
@@ -36,7 +36,7 @@ declare global {
     }
 }
 
-Uint8Array.prototype.subArray = function (
+Uint8Array.prototype.subUint8Array = function (
     startIndex: number,
     length?: number,
 ): Uint8Array {
@@ -47,7 +47,7 @@ Uint8Array.prototype.subArray = function (
 };
 
 Uint8Array.prototype.toASCIIString = function (): string {
-    return new TextDecoder().decode(this);
+    return new TextDecoder().decode(this).trim();
 };
 
 Uint8Array.prototype.toNumber = function (): number {

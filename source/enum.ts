@@ -54,3 +54,44 @@ export enum ReferenceDieSettingProcedures
     /** @description Teaching Die */
     Teaching = 3
 }
+
+/** Probing Start Position 列舉 */
+/// </summary>
+export enum ProbingStartPosition
+{
+    /** @description upper-left */
+    UpperLeft = 1,
+    /** @description upper-right */
+    UpperRight = 2,
+    /** @description lower-left */
+    LowerLeft = 3,
+    /** @description lower-right */
+    LowerRight = 4
+}
+
+/** @description ProbingDirection */
+export enum ProbingDirection
+{
+    /** @description leftward */
+    Leftward = 1,
+    /** @description rightward */
+    Rightward = 2,
+    /** @description upward */
+    Upward = 3,
+    /** @description backward */
+    Backward = 4
+}
+
+/** @description Testing End Information */
+export enum TestingEndInformation {
+    /** @description Normal End */
+    NormalEnd,
+    /** @description Yield NG */
+    YieldNG,
+    /** @description Continuous Fail NG */
+    ContinuousFAILNG,
+    /** @description Manual Unload */
+    ManualUnload,
+    /** @description Other Reject */
+    OtherReject
+}
