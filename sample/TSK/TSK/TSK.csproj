@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AssemblyVersion>2025.7.27.0448</AssemblyVersion>
+    <FileVersion>2025.7.27.0448</FileVersion>
+    <NoWarn>1701;1702;IDE0090;IDE0071;IDE0028;CA1861;IDE0300;CA1822;IDE0290;CA1825</NoWarn>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <!--
+    <OutputPath>\\192.168.214.12\HSC_DLLs\TSK\</OutputPath>
+    <DocumentationFile>\\192.168.214.12\HSC_DLLs\TSK\TSK.xml</DocumentationFile>
+    -->
+  </PropertyGroup>
+
+</Project>

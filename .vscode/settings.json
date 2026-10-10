@@ -1,0 +1,7 @@
+{
+    "deno.enable": true,
+    "deno.codeLens.references": true,
+    "deno.codeLens.referencesAllFunctions": true,
+    "deno.codeLens.implementations": true,
+    "editor.codeLens": true
+}

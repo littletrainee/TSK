@@ -1,0 +1,12 @@
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\bin\Debug\TSK.deps.json
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\bin\Debug\TSK.dll
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\obj\Debug\TSK.csproj.AssemblyReference.cache
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\obj\Debug\TSK.GeneratedMSBuildEditorConfig.editorconfig
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\obj\Debug\TSK.AssemblyInfoInputs.cache
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\obj\Debug\TSK.AssemblyInfo.cs
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\obj\Debug\TSK.csproj.CoreCompileInputs.cache
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\obj\Debug\TSK.dll
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\bin\Debug\TSK.xml
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\obj\Debug\refint\TSK.dll
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\obj\Debug\TSK.xml
+D:\Testar\AutomationProgram\SharedLibrary\TSK\TSK\obj\Debug\ref\TSK.dll
