@@ -95,3 +95,102 @@ export enum TestingEndInformation {
     /** @description Other Reject */
     OtherReject
 }
+
+//#region First Word    
+/** @description Die Test Result */
+export enum DieTestResult
+{
+    /**
+     * @description Not Tested   
+     * 0 -> [00]
+    */
+    NotTested,
+    /**
+     * @description Pass Die  
+     * 1 -> [01]
+     */
+    PassDie,
+    /**
+     * @description Fail 1 Die  
+     * 2 -> [10]
+     */
+    Fail1Die,
+    /**
+     * @description Fail 2 Die  
+     * 3 -> [11]
+     */
+    Fail2Die
+}
+
+/** @description Marking */
+export enum Marking
+{
+    /** 
+     * @description No  
+     * 0 -> [0]
+     */
+    No,
+    /**
+     * @description Yes (After Marking: 1)  
+     * 1-> [1]
+     */
+    Yes
+}
+
+/** @description Fail Mark Inspection 列舉 */
+export enum FailMarkInspection
+{
+    /**
+     * @description Yes  
+     * 0 -> [0]
+     */
+    Yes,
+    /**
+     * @description No  
+     * 1 -> [1]
+     */
+    No
+}
+
+/** @description Re-Probing Result */
+export enum ReProbingResult
+{
+    /**
+     * @description Not Re-Probed  
+     * 0 -> [00]
+     */
+    NotReProbed,
+    /**
+     * @description Passed At Re-Probing  `
+     * 1 -> [01]
+     */
+    PassedAtReProbing,
+    /**
+     * @description Failed At Re-Probing  
+     * 2 -> [10]
+     */
+    FailAtReProbing,
+    /**
+     * @description Perform fail (for special user)  
+     * 3 -> [11]
+     */
+    /// </summary>
+    PerformFail
+}
+
+/** @description Needle Mark Inspection Result */
+export enum NeedleMarkInspectionResult
+{
+    /**
+     * @description OK  
+     * 0 -> [0]
+     */
+    OK,
+    /**
+     * @description NG  
+     * 1 -> [1]
+     */
+    /// </summary>
+    NG
+}
+//#endregion
