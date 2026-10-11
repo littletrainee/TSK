@@ -20,7 +20,7 @@ async function extendedHeaderTest(){
         // const bytes = await Deno.readFile('D:\\Document\\TSK\\sample\\60BH82.E-1');
         let currentIndex : number = 0;
         const header: Header = new Header(bytes.subarray(0, 236));
-        currentIndex += header.tskHeaderByties.length;
+        currentIndex += header.headerByties.length;
 
         currentIndex += header.mapDataAreaLineSize * header.MapDataAreaRowSize * 6;
 
