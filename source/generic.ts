@@ -47,11 +47,26 @@ Uint8Array.prototype.subUint8Array = function (
 };
 
 Uint8Array.prototype.toASCIIString = function (): string {
-    return new TextDecoder().decode(this).trim();
+    // return new TextDecoder().decode(this).trim();
+    let result = '';
+    for(const byte of this){
+        if (byte=== 0){
+            continue;
+        }
+        result += String.fromCharCode(byte);
+    }
+
+    return result.trim();
 };
 
 Uint8Array.prototype.toNumber = function (): number {
-    return Buffer.from(this).readUIntBE(0, this.length);
+    // return Buffer.from(this).readUIntBE(0, this.length);
+    let result = 0;
+    for(let i = 0; i < this.length;i++){
+        result |= this[i] << (8 * (this.length - 1 - i));
+    }
+
+    return result;
 };
 
 String.prototype.toUint8Array = function (length: number): Uint8Array {
@@ -76,4 +91,13 @@ Number.prototype.toUint8Array = function (
     return result;
 };
 
+export function getDateTimeString(value: Date): Uint8Array {
+    const yy = String(value.getFullYear() % 100).padStart(2, '0');
+    const MM = String(value.getMonth() + 1).padStart(2, '0');
+    const dd = String(value.getDate()).padStart(2, '0');
+    const HH = String(value.getHours()).padStart(2, '0');
+    const mm = String(value.getMinutes()).padStart(2, '0');
+
+    return `${yy}${MM}${dd}${HH}${mm}`.toUint8Array(10);
+}
 export {};

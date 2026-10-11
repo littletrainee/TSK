@@ -1,4 +1,4 @@
-import './generic.ts';
+import {getDateTimeString} from './generic.ts';
 import * as e from './enum.ts';
 
 export abstract class HeaderBase {
@@ -510,15 +510,15 @@ export abstract class HeaderBase {
     // #endregion
     // #endregion
 
-    private getDateTimeString(value: Date): Uint8Array {
-        const yy = String(value.getFullYear() % 100).padStart(2, '0');
-        const MM = String(value.getMonth() + 1).padStart(2, '0');
-        const dd = String(value.getDate()).padStart(2, '0');
-        const HH = String(value.getHours()).padStart(2, '0');
-        const mm = String(value.getMinutes()).padStart(2, '0');
+    // private getDateTimeString(value: Date): Uint8Array {
+    //     const yy = String(value.getFullYear() % 100).padStart(2, '0');
+    //     const MM = String(value.getMonth() + 1).padStart(2, '0');
+    //     const dd = String(value.getDate()).padStart(2, '0');
+    //     const HH = String(value.getHours()).padStart(2, '0');
+    //     const mm = String(value.getMinutes()).padStart(2, '0');
 
-        return `${yy}${MM}${dd}${HH}${mm}`.toUint8Array(10);
-    }
+    //     return `${yy}${MM}${dd}${HH}${mm}`.toUint8Array(10);
+    // }
 
     //#region Wafer Testing Start Time Data
     /**
@@ -535,7 +535,7 @@ export abstract class HeaderBase {
         );
     }
     set waferTestingStartDateTime(value: Date) {
-        const temp = this.getDateTimeString(value);
+        const temp = getDateTimeString(value);
 
         for (let i = 0; i < temp.length; i++) {
             this.tskHeaderByties[148 + i] = temp[i];
@@ -558,7 +558,7 @@ export abstract class HeaderBase {
         );
     }
     set waferTestingEndDateTime(value: Date) {
-        const temp = this.getDateTimeString(value);
+        const temp = getDateTimeString(value);
 
         for (let i = 0; i < temp.length; i++) {
             this.tskHeaderByties[160 + i] = temp[i];
@@ -582,7 +582,7 @@ export abstract class HeaderBase {
         );
     }
     set waferLoadingDateTime(value: Date) {
-        const temp = this.getDateTimeString(value);
+        const temp = getDateTimeString(value);
 
         for (let i = 0; i < temp.length; i++) {
             this.tskHeaderByties[172 + i] = temp[i];
@@ -606,7 +606,7 @@ export abstract class HeaderBase {
         );
     }
     set waferUnloadingDateTime(value: Date) {
-        const temp = this.getDateTimeString(value);
+        const temp = getDateTimeString(value);
         for (let i = 0; i < temp.length; i++) {
             this.tskHeaderByties[184 + i] = temp[i];
         }
