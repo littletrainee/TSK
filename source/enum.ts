@@ -48,10 +48,10 @@ export enum YCoordinatesIncreaseDirection {
 export enum ReferenceDieSettingProcedures {
     /** @description Wafer Center Die */
     WaferCenter = 1,
-    /** @description Target Sense Die */
-    TargetSense = 2,
     /** @description Teaching Die */
-    Teaching = 3,
+    Teaching = 2,
+    /** @description Target Sense Die */
+    TargetSense = 3,
 }
 
 /** Probing Start Position 列舉 */

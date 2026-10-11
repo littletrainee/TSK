@@ -1,4 +1,4 @@
-import {getDateTimeString} from './generic.ts';
+import {getDateTime, getDateTimeString} from './generic.ts';
 import * as e from './enum.ts';
 
 export abstract class HeaderBase {
@@ -510,33 +510,16 @@ export abstract class HeaderBase {
     // #endregion
     // #endregion
 
-    // private getDateTimeString(value: Date): Uint8Array {
-    //     const yy = String(value.getFullYear() % 100).padStart(2, '0');
-    //     const MM = String(value.getMonth() + 1).padStart(2, '0');
-    //     const dd = String(value.getDate()).padStart(2, '0');
-    //     const HH = String(value.getHours()).padStart(2, '0');
-    //     const mm = String(value.getMinutes()).padStart(2, '0');
-
-    //     return `${yy}${MM}${dd}${HH}${mm}`.toUint8Array(10);
-    // }
-
     //#region Wafer Testing Start Time Data
     /**
      * @description Wafer 開始測試的時間
      * 開始位置 [148] 占 [10] `Byte`
      */
     get waferTestingStartDateTime(): Date {
-        return new Date(
-            Number(this.tskHeaderByties.subUint8Array(148, 2).toASCIIString()) + 2000,
-            Number(this.tskHeaderByties.subUint8Array(150, 2).toASCIIString()) - 1,
-            Number(this.tskHeaderByties.subUint8Array(152, 2).toASCIIString()),
-            Number(this.tskHeaderByties.subUint8Array(154, 2).toASCIIString()),
-            Number(this.tskHeaderByties.subUint8Array(156, 2).toASCIIString()),
-        );
+        return getDateTime(this.tskHeaderByties, 148);
     }
     set waferTestingStartDateTime(value: Date) {
         const temp = getDateTimeString(value);
-
         for (let i = 0; i < temp.length; i++) {
             this.tskHeaderByties[148 + i] = temp[i];
         }
@@ -549,17 +532,10 @@ export abstract class HeaderBase {
      * 開始位置 [160] 占 [12] `Byte`
      */
     get waferTestingEndDateTime(): Date {
-        return new Date(
-            Number(this.tskHeaderByties.subUint8Array(160, 2).toASCIIString()) + 2000,
-            Number(this.tskHeaderByties.subUint8Array(162, 2).toASCIIString()) - 1,
-            Number(this.tskHeaderByties.subUint8Array(164, 2).toASCIIString()),
-            Number(this.tskHeaderByties.subUint8Array(166, 2).toASCIIString()),
-            Number(this.tskHeaderByties.subUint8Array(168, 2).toASCIIString()),
-        );
+        return getDateTime(this.tskHeaderByties, 160)
     }
     set waferTestingEndDateTime(value: Date) {
         const temp = getDateTimeString(value);
-
         for (let i = 0; i < temp.length; i++) {
             this.tskHeaderByties[160 + i] = temp[i];
         }
@@ -573,17 +549,10 @@ export abstract class HeaderBase {
     /// 開始位置 [172] 占 [12] <see langword="byte"/>
     /// </summary>
     get waferLoadingDateTime(): Date {
-        return new Date(
-            Number(this.tskHeaderByties.subUint8Array(172, 2).toASCIIString()) + 2000,
-            Number(this.tskHeaderByties.subUint8Array(174, 2).toASCIIString()) - 1,
-            Number(this.tskHeaderByties.subUint8Array(176, 2).toASCIIString()),
-            Number(this.tskHeaderByties.subUint8Array(178, 2).toASCIIString()),
-            Number(this.tskHeaderByties.subUint8Array(180, 2).toASCIIString()),
-        );
+        return getDateTime(this.tskHeaderByties, 172);
     }
     set waferLoadingDateTime(value: Date) {
         const temp = getDateTimeString(value);
-
         for (let i = 0; i < temp.length; i++) {
             this.tskHeaderByties[172 + i] = temp[i];
         }
@@ -597,13 +566,7 @@ export abstract class HeaderBase {
     /// 開始位置 [184] 占 [12] <see langword="byte"/>
     /// </summary>
     get waferUnloadingDateTime(): Date {
-        return new Date(
-            Number(this.tskHeaderByties.subUint8Array(184, 2).toASCIIString()) + 2000,
-            Number(this.tskHeaderByties.subUint8Array(186, 2).toASCIIString()) - 1,
-            Number(this.tskHeaderByties.subUint8Array(188, 2).toASCIIString()),
-            Number(this.tskHeaderByties.subUint8Array(190, 2).toASCIIString()),
-            Number(this.tskHeaderByties.subUint8Array(192, 2).toASCIIString()),
-        );
+        return getDateTime(this.tskHeaderByties, 184);
     }
     set waferUnloadingDateTime(value: Date) {
         const temp = getDateTimeString(value);

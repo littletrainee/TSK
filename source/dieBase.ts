@@ -1,4 +1,5 @@
 import * as e from './enum.ts';
+import { ExtendedDieBase } from './extendedDieBase.ts';
 
 export interface Point {
     x: number;
@@ -64,7 +65,7 @@ export abstract class DieBase {
     }
     set dieCoordinatorX(value: number) {
         this.currentByties[0] = (this.currentByties[0] & 0b11111110) | ((value & 0b00000001_00000000) >> 8);
-        this.currentByties[1] = this.currentByties[1] | (value & 0b11111111);
+        this.currentByties[1] = value & 0b11111111;
     }
     //#endregion
 
@@ -148,14 +149,14 @@ export abstract class DieBase {
     }
     set dieCoordinatorY(value: number) {
         this.currentByties[2] = (this.currentByties[2] & 0b11111110) | ((value & 0b00000001_00000000) >> 8);
-        this.currentByties[3] = this.currentByties[3] | (value & 0b11111111);
+        this.currentByties[3] = value & 0b11111111;
     }
     //#endregion
 
     //#region Second Word
     /** @description 第 [2] 字節，[2] 個 `Byte`，[16] 個 `Bit` */
     get secondWord(): Uint8Array {
-        return this.currentByties.subarray(2, 3);
+        return this.currentByties.subarray(2, 4);
     }
     set secondWord(value: Uint8Array) {
         this.currentByties[2] = value[0];
@@ -218,7 +219,7 @@ export abstract class DieBase {
     //#region Third Word
     /** @description 第 [3] 字節，[2] 個 `Byte`，[16] 個 `Bit` */
     get ThirdWord(): Uint8Array {
-        return this.currentByties.subarray(4, 5);
+        return this.currentByties.subarray(4, 6);
     }
     set ThirdWord(value: Uint8Array) {
         this.currentByties[4] = value[0];
@@ -238,35 +239,21 @@ export abstract class DieBase {
             return 'M';
         }
 
-        //TODO extendedDieData
-        return this.categoryData.toString();
-        // switch (this.dieProperty)
-        // {
-        //     default:
-        //         return this.ExtendedDieData is null
-        //             ? this.CategoryData.ToString()
-        //             : this.ExtendedDieData.MapVersion4ExtendedBinaryCategory.ToString();
-        // }
+        return this.extendedDieData === undefined ? this.categoryData.toString() : this.extendedDieData.mapVersion4ExtendedBinaryCategory.toString();
     }
     //#endregion
 
     //#region Site Number
     /** @description Site Number */
     get siteNumber(): number {
-        return this.testExecutionSiteNumber;
-        // return this.ExtendedDieData is null
-        //     ? this.TestExecutionSiteNumber
-        //     : this.ExtendedDieData.MapVersion4ExtendedTestExecutionSite;
+        return this.extendedDieData === undefined ? this.testExecutionSiteNumber : this.extendedDieData.mapVersion4ExtendedTestExecutionSite;
     }
     set siteNumber(value: number) {
-        // if (this.ExtendedDieData is null)
-        // {
-        this.testExecutionSiteNumber = value;
-        // }
-        // else
-        // {
-        //     this.ExtendedDieData.MapVersion4ExtendedTestExecutionSite = value;
-        // }
+        if (this.extendedDieData === undefined) {
+            this.testExecutionSiteNumber = value;
+        } else {
+            this.extendedDieData.mapVersion4ExtendedTestExecutionSite = value;
+        }
     }
     //#endregion
 
@@ -284,16 +271,17 @@ export abstract class DieBase {
     //#endregion
 
     //#region Is Pass Die
-    /** 
-     * @description 獲取當前的 `DieBase` 是否為 Pass Die 
+    /**
+     * @description 獲取當前的 `DieBase` 是否為 Pass Die
      * @returns {boolean} 若為 Pass Die 則回傳 `true`，否則 false`.
-    */
-    get isPassDie() : boolean {
+     */
+    get isPassDie(): boolean {
         return this.dieTestResult == e.DieTestResult.PassDie;
     }
     //#endregion
 
     public currentByties: Uint8Array;
+    public extendedDieData?: ExtendedDieBase;
     constructor(currentDieByties: Uint8Array) {
         this.currentByties = currentDieByties;
     }
