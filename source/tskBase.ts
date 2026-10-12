@@ -22,6 +22,8 @@ export abstract class TSKBase{
     protected currentIndex : number;
 
     /**
+     * @description 實例化 `TSKBase` 物件
+     * 
      * @example
      * ```typescript
      * super(byties);
@@ -75,6 +77,8 @@ export abstract class TSKBase{
 
     /**
      * @abstract
+     * @description `TSK` 的 `Die`  
+     * 繼承後必須實作以下程式碼才可正確解析
      * 
      * @example
      * ```typescript
@@ -94,6 +98,8 @@ export abstract class TSKBase{
 
     /**
      * @abstract
+     * @description 解析 `ExtendedDie`  
+     * 繼承後必須實作以下程式碼才可正確解析
      * 
      * @example
      * ```typescript
